@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karşılama Ekranı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-900 text-orange-300 flex items-center justify-center h-screen">
+    <div id="nameForm" class="text-center">
+        <h1 class="text-3xl font-bold">Adınızı Girin</h1>
+        <input type="text" id="nameInput" class="mt-4 p-2 rounded bg-gray-800 text-white" placeholder="Adınız">
+        <button onclick="submitName()" class="mt-2 px-4 py-2 bg-orange-500 text-white rounded">Giriş</button>
+    </div>
+
+    <div id="welcomeScreen" class="hidden text-center">
+        <h1 class="text-4xl font-bold">Patika+</h1>
+        <h2 class="text-2xl mt-2">Merhaba, <span id="userName" class="font-bold"></span>! Hoş geldin!</h2>
+        <h3 id="clock" class="text-3xl mt-4"></h3>
+        <p id="date" class="mt-2 text-lg"></p>
+    </div>
+
+    <script>
+        function submitName() {
+            const name = document.getElementById("nameInput").value;
+            if (name.trim() !== "") {
+                localStorage.setItem("userName", name);
+                showWelcomeScreen(name);
+            }
+        }
+
+        function showWelcomeScreen(name) {
+            document.getElementById("nameForm").classList.add("hidden");
+            document.getElementById("welcomeScreen").classList.remove("hidden");
+            document.getElementById("userName").textContent = name;
+            updateTime();
+            setInterval(updateTime, 1000);
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+            const dayString = now.toLocaleDateString("tr-TR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+            document.getElementById("clock").textContent = timeString;
+            document.getElementById("date").textContent = dayString;
+        }
+
+        window.onload = function() {
+            const storedName = localStorage.getItem("userName");
+            if (storedName) {
+                showWelcomeScreen(storedName);
+            }
+        };
+    </script>
+</body>
+</html>
