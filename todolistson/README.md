@@ -44,9 +44,12 @@ Projede kullanılan görseller **Adobe Illustrator ve Adobe Photoshop** ile öze
 ![Açık Tema İkonu](casperL.png)
 ![Koyu Tema İkonu](casperN.png)*
 
-```**📁 Dosya Yapısı**
+```**📁
+Screenshot 2025-02-25 at 4.50.58 PM.png
+Screenshot 2025-02-25 at 4.50.44 PM
 
 ```
+
 /to-do-list
 │
 ├── index.html       # Ana HTML dosyası.
@@ -55,6 +58,7 @@ Projede kullanılan görseller **Adobe Illustrator ve Adobe Photoshop** ile öze
 ├── casperL.png      # Açık tema ikon görseli.
 ├── casperN.png      # Koyu tema ikon görseli.
 └── README.md        # Proje dökümantasyonu.
+
 ```
 **🎭 Katkıda Bulunma**
 
@@ -67,3 +71,4 @@ Bu proje **MIT Lisansı** ile lisanslanmıştır. Dilediğiniz gibi kullanabilir
 **📩 İletişim**
 
 📧 Herhangi bir sorunuz, öneriniz veya geliştirme fikriniz varsa **[mrtndn25@gmail.com]** üzerinden benimle iletişime geçebilirsiniz!
+```
