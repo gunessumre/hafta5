@@ -46,6 +46,7 @@ Projede kullanılan görseller **Adobe Illustrator ve Adobe Photoshop** ile öze
 
 **Koyu Tema Görünümü:**
 ![Dark Mode](Screenshot-dark-mode.png)
+
 ![Arka Plan](background.png)
 ![Açık Tema İkonu](casperL.png)
 ![Koyu Tema İkonu](casperN.png)*
@@ -76,5 +77,6 @@ Bu proje **MIT Lisansı** ile lisanslanmıştır. Dilediğiniz gibi kullanabilir
 
 **📩 İletişim**
 
-📧 Herhangi bir sorunuz, öneriniz veya geliştirme fikriniz varsa **[mrtndn25@gmail.com]** üzerinden benimle iletişime geçebilirsiniz!
+📧 Herhangi bir sorunuz, öneriniz veya geliştirme fikriniz varsa **[mrtndn25@gmail.com]** üzerinden benimle
+iletişime geçebilirsiniz!
 ```
