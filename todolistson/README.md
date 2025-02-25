@@ -47,13 +47,21 @@ Projede kullanılan görseller **Adobe Illustrator ve Adobe Photoshop** ile öze
 **Koyu Tema Görünümü:**
 ![Dark Mode](Screenshot-dark-mode.png)
 
+
+## 🌙 Tema Görünümleri
+
+**Açık Tema Görünümü:**
+![Light Mode](Screenshot-light-mode.png)
+
+**Koyu Tema Görünümü:**
+![Dark Mode](Screenshot-dark-mode.png)
+
 ![Arka Plan](background.png)
 ![Açık Tema İkonu](casperL.png)
 ![Koyu Tema İkonu](casperN.png)*
 
 ```**📁
-Screenshot 2025-02-25 at 4.50.58 PM.png
-Screenshot 2025-02-25 at 4.50.44 PM
+
 
 ```
 
