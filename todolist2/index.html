@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Görev Listesi</title>
+    <link rel="stylesheet" href="https://use.typekit.net/dyo8ywa.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="title">To-Do List</h1>
+        <img src="calcifer1.png" class="calcifer" alt="Calcifer Head">
+        <div class="task-box">
+            <input type="text" id="taskInput" class="task-input" placeholder="Add a task..." onkeypress="handleKeyPress(event)">
+            <button class="add-task" onclick="addTask()">Add to task</button>
+            <ul class="task-list" id="taskList"></ul>
+        </div>
+        <img src="calcifer2.png" class="calcifer-bottom" alt="Calcifer Body">
+    </div>
+
+    <script>
+        function addTask() {
+            const taskList = document.getElementById("taskList");
+            const taskInput = document.getElementById("taskInput");
+            const taskText = taskInput.value.trim();
+            if (taskText === "") return;
+            
+            const taskItem = document.createElement("li");
+            taskItem.className = "task incomplete";
+            taskItem.innerHTML = `
+                <span>${taskText}</span>
+                <img src="incomplete.png" alt="Pasif Ateş" class="status-icon">
+                <img src="trash-icon.png" alt="Sil" class="delete-btn" onclick="deleteTask(event)">
+            `;
+            
+            taskItem.addEventListener("click", function(event) {
+                if (event.target.classList.contains("delete-btn")) return;
+                if (taskItem.classList.contains("incomplete")) {
+                    taskItem.classList.remove("incomplete");
+                    taskItem.classList.add("completed");
+                    taskItem.querySelector(".status-icon").src = "completed.png";
+                } else {
+                    taskItem.classList.remove("completed");
+                    taskItem.classList.add("incomplete");
+                    taskItem.querySelector(".status-icon").src = "incomplete.png";
+                }
+            });
+            
+            taskList.appendChild(taskItem);
+            taskInput.value = "";
+        }
+
+        function deleteTask(event) {
+            event.stopPropagation();
+            event.target.parentElement.remove();
+        }
+        
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                addTask();
+            }
+        }
+    </script>
+</body>
+</html>

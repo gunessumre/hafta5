@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts "Press Start 2P" -->
+    <link rel="stylesheet" href="https://use.typekit.net/dyo8ywa.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h2 class="text-2xl font-bold text-red-500 text-center">ADD NEW TASK</h2>
+        
+        <div class="flex items-center mt-4">
+            <input type="text" id="taskInput" placeholder="Görev ekle..." 
+                class="flex-grow p-2 border rounded-md text-lg">
+            <button onclick="addTask()" class="ml-2 px-4 py-2 bg-red-500 text-white rounded-full">+</button>
+        </div>
+
+        <ul id="taskList" class="mt-4 space-y-4"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            let taskInput = document.getElementById("taskInput");
+            let taskList = document.getElementById("taskList");
+
+            if (taskInput.value.trim() === "") return;
+
+            let li = document.createElement("li");
+            li.className = "task-item flex items-center justify-between";
+
+            let checkBtn = document.createElement("div");
+            checkBtn.className = "circle-btn";
+            checkBtn.innerHTML = "✔"; 
+            checkBtn.onclick = function() {
+                this.classList.toggle("checked");
+                li.querySelector("span").classList.toggle("checked");
+            };
+
+            let taskText = document.createElement("span");
+            taskText.className = "text-xl";
+            taskText.innerText = taskInput.value;
+
+            li.appendChild(checkBtn);
+            li.appendChild(taskText);
+            taskList.appendChild(li);
+
+            taskInput.value = "";
+        }
+    </script>
+   <!--/* JavaScript ile Sürükleme ve Silme Özelliği */ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const taskList = document.getElementById("taskList");
+            const trashBin = document.querySelector(".trash-bin");
+            
+            taskList.addEventListener("dragstart", (event) => {
+                event.target.classList.add("dragging");
+            });
+            
+            taskList.addEventListener("dragend", (event) => {
+                event.target.classList.remove("dragging");
+            });
+            
+            trashBin.addEventListener("dragover", (event) => {
+                event.preventDefault();
+            });
+            
+            trashBin.addEventListener("drop", (event) => {
+                event.preventDefault();
+                const draggingTask = document.querySelector(".dragging");
+                if (draggingTask) {
+                    draggingTask.remove();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

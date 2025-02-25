@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>To-Do List</h1>
+            <div class="header-controls">
+                <div class="clock" id="clock">00:00:00</div>
+                <button class="theme-toggle" id="themeToggle">
+                    <img src="casperL.png" id="themeIcon" alt="Theme Icon">
+                </button>
+            </div>
+        </div>
+        <div class="remaining-tasks" id="remaining-count">3 görev kaldı</div>
+        
+        <div class="task-list" id="taskList">
+            <!-- Görevler JavaScript ile eklenecek -->
+        </div>
+        
+        <div class="add-task">
+            <input type="text" id="newTask" placeholder="Yeni görev ekle...">
+            <button class="add-button" id="addButton">+</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                themeIcon.src = 'casperL.png';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                themeIcon.src = 'casperN.png';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Sayfa yüklendiğinde tema kontrolü
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.src = 'casperN.png';
+            } else {
+                themeIcon.src = 'casperL.png';
+            }
+
+            // Tema değiştirme butonuna tıklama olayı ekle
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+        });
+        
+        // Saat fonksiyonu
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        
+        // Saati başlat
+        setInterval(updateClock, 1000);
+        updateClock();
+        
+        // Örnek görevler
+        const tasks = [
+            { time: '6:30 AM', content: 'Daily UI Number 42', color: 'red', status: 'active' },
+            { time: '7:25 AM', content: 'Send emails out', color: 'blue', status: 'active' },
+            { time: '9:35 AM', content: 'Meeting internship', color: 'yellow', status: 'active' },
+            { time: '5:30 AM', content: 'Prepare Interview Questions', color: 'blue', status: 'completed' },
+            { time: '10:05 PM', content: 'Make a killer breakfast', color: 'yellow', status: 'active' }
+        ];
+        
+        // Görevleri render et
+        function renderTasks() {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+            
+            // Önce aktif görevleri ekle
+            tasks.filter(task => task.status === 'active').forEach(task => {
+                const taskItem = document.createElement('div');
+                taskItem.className = 'task-item';
+                
+                const indicator = document.createElement('div');
+                indicator.className = `indicator ${task.color}`;
+                
+                const taskTime = document.createElement('div');
+                taskTime.className = 'task-time';
+                taskTime.textContent = task.time;
+                
+                const taskContent = document.createElement('div');
+                taskContent.className = 'task-content';
+                taskContent.textContent = task.content;
+                
+                const taskDots = document.createElement('div');
+                taskDots.className = 'task-dots';
+                
+                // 4 renkli nokta ekle
+                for (let i = 1; i <= 4; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = `dot color${i}`;
+                    taskDots.appendChild(dot);
+                }
+                
+                taskItem.appendChild(indicator);
+                taskItem.appendChild(taskTime);
+                taskItem.appendChild(taskContent);
+                taskItem.appendChild(taskDots);
+                
+                // Tıklama olayı - tamamlandı olarak işaretle
+                taskItem.addEventListener('click', function() {
+                    if (task.status === 'active') {
+                        task.status = 'completed';
+                    } else {
+                        task.status = 'active';
+                    }
+                    renderTasks();
+                    updateRemainingCount();
+                });
+                
+                taskList.appendChild(taskItem);
+            });
+            
+            // Sonra tamamlanmış görevleri ekle
+            tasks.filter(task => task.status === 'completed').forEach(task => {
+                const taskItem = document.createElement('div');
+                taskItem.className = 'task-item completed';
+                
+                const completedIndicator = document.createElement('div');
+                completedIndicator.className = 'completed-indicator';
+                completedIndicator.innerHTML = '✓';
+                
+                const taskContent = document.createElement('div');
+                taskContent.className = 'task-content';
+                taskContent.textContent = task.content;
+                
+                const taskTime = document.createElement('div');
+                taskTime.className = 'task-time';
+                taskTime.textContent = 'Completed ' + task.time;
+                
+                taskItem.appendChild(completedIndicator);
+                taskItem.appendChild(taskContent);
+                taskItem.appendChild(taskTime);
+                
+                // Tıklama olayı - aktif olarak işaretle
+                taskItem.addEventListener('click', function() {
+                    if (task.status === 'active') {
+                        task.status = 'completed';
+                    } else {
+                        task.status = 'active';
+                    }
+                    renderTasks();
+                    updateRemainingCount();
+                });
+                
+                taskList.appendChild(taskItem);
+            });
+        }
+        
+        // Kalan görev sayısını güncelle
+        function updateRemainingCount() {
+            const activeCount = tasks.filter(task => task.status === 'active').length;
+            document.getElementById('remaining-count').textContent = `${activeCount} görev kaldı`;
+        }
+        
+        // Yeni görev ekleme
+        document.getElementById('addButton').addEventListener('click', function() {
+            const newTaskInput = document.getElementById('newTask');
+            const taskContent = newTaskInput.value.trim();
+            
+            if (taskContent !== '') {
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                const formattedHours = hours % 12 || 12;
+                const formattedTime = `${formattedHours}:${String(minutes).padStart(2, '0')} ${ampm}`;
+                
+                // Rastgele renk seç
+                const colors = ['red', 'blue', 'yellow'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                tasks.push({
+                    time: formattedTime,
+                    content: taskContent,
+                    color: randomColor,
+                    status: 'active'
+                });
+                
+                newTaskInput.value = '';
+                renderTasks();
+                updateRemainingCount();
+            }
+        });
+        
+        // Enter tuşu ile görev ekleme
+        document.getElementById('newTask').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('addButton').click();
+            }
+        });
+        
+        // Sayfayı yükle
+        renderTasks();
+        updateRemainingCount();
+    </script>
+</body>
+</html>

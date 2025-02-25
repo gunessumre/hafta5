@@ -1,0 +1,128 @@
+/* Google Fonts */
+@import url("https://use.typekit.net/dyo8ywa.css");
+
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: "cofo-sans-pixel", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+/* To-Do List Container */
+.todo-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Başlık */
+h2 {
+    font-size: 16px;
+    text-align: center;
+    color: red;
+}
+
+/* Input Kutusu */
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* Ekleme Butonu */
+button {
+    padding: 8px;
+    border: none;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Görev Listesi */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Görev Kutusu */
+.task-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px; /* Checkbox ile metin arasına boşluk ekledik */
+    padding: 10px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Hover Etkisi */
+.task-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(69, 3, 249, 0.2);
+    background: rgba(165, 115, 241, 0.5);
+
+}
+.circle-btn:hover {
+    border-color: rgb(157, 83, 227); /* Çerçeve rengini değiştir */
+    background: rgba(64, 2, 119, 0.2); /* Hafif mavi arka plan ekle */
+    transition: 0.2s ease-in-out;
+}
+
+/* Tamamlanmış Görev */
+.checked {
+    text-decoration: line-through;
+    color: rgb(171, 130, 214);
+}
+
+/* Yuvarlak Checkbox (Düzeltildi) */
+.circle-btn {
+    width: 24px; /* Sabit genişlik */
+    height: 24px; /* Sabit yükseklik */
+    border-radius: 50%;
+    border: 2px solid rgb(161, 81, 208);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Checkbox'ın küçülmesini engeller */
+}
+
+/* Checkbox Seçildiğinde */
+.circle-btn.checked {
+    background: rgb(137, 121, 246);
+    color: rgb(115, 35, 164);
+    border-color: rgb(132, 100, 190);
+}
+
+/* Görev Metni (Uzunluk Kontrolü) */
+.task-text {
+    max-width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
