@@ -39,7 +39,13 @@ Projede kullanılan görseller **Adobe Illustrator ve Adobe Photoshop** ile öze
 **	**•**	****casperL.png** → Açık tema ikon görseli **(Illustrator ile tasarlandı).**
 
 **	**•**	****casperN.png** → Koyu tema ikon görseli **(Illustrator ile tasarlandı).**
+## 🌙 Tema Görünümleri
 
+**Açık Tema Görünümü:**
+![Light Mode](Screenshot-light-mode.png)
+
+**Koyu Tema Görünümü:**
+![Dark Mode](Screenshot-dark-mode.png)
 ![Arka Plan](background.png)
 ![Açık Tema İkonu](casperL.png)
 ![Koyu Tema İkonu](casperN.png)*
