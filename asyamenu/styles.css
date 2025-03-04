@@ -1,0 +1,107 @@
+/* Genel Stiller */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Başlık */
+header {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: white;
+    padding: 20px;
+    font-size: 1.8rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Buton Container */
+.btn-container {
+    margin: 20px 0;
+}
+
+.btn-item {
+    background: white;
+    border: 2px solid #ff6b6b;
+    color: #ff6b6b;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-item:hover {
+    background: #ff6b6b;
+    color: white;
+}
+
+/* Menü Container */
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Menü Öğeleri */
+.menu-items {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.menu-items:hover {
+    transform: scale(1.05);
+}
+
+/* Menü Resimleri */
+.photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    margin: 15px;
+    object-fit: cover;
+}
+
+/* Menü Bilgisi */
+.menu-info {
+    text-align: left;
+    padding: 10px;
+    flex: 1;
+}
+
+.menu-title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ff6b6b;
+}
+
+.menu-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .menu-items {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .photo {
+        width: 100%;
+        height: 150px;
+        border-radius: 10px 10px 0 0;
+    }
+}
