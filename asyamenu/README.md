@@ -23,7 +23,12 @@ Bu proje, JavaScript kullanarak dinamik olarak oluşturulan bir Asya mutfağı m
 
 * Projeyi bilgisayarınıza klonlayın:
 
-  **   git clone (https://github.com/gunessumre/hafta5/blob/main/asyamenu.git)
+  **  ## AsyaMenu Projesi
+
+Bu projeyi klonlamak için aşağıdaki komutu kullanabilirsiniz:
+
+```bash
+git clone https://github.com/gunessumre/hafta5.git
 * Proje klasörüne gidin:
 
   **   cd asyamutfagi-menu**
